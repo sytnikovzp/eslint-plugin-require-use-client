@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-require-use-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Require \"use client\" directive when using client-only React APIs",
   "main": "index.js",
   "type": "commonjs",
@@ -14,7 +14,8 @@
     "react",
     "nextjs",
     "next",
-    "use client"
+    "use client",
+    "useclient"
   ],
   "author": "Oleksandr Sytnikov <sytnikov.zp@gmail.com>",
   "publishConfig": {
