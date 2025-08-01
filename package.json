@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-require-use-client",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "Require \"use client\" directive when using client-only React APIs",
   "main": "index.js",
   "type": "commonjs",
