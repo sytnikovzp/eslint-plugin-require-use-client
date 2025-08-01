@@ -1,0 +1,31 @@
+name: Publish package on npmjs.com
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    if: |
+      github.actor != 'github-actions[bot]' &&
+      contains(github.event.head_commit.message, 'chore(main): release') &&
+      github.event.head_commit.message != '' &&
+      startsWith(github.event.head_commit.message, 'Merge pull request')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      # - run: npm test
+      - run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
