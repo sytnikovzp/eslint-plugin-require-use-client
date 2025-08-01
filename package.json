@@ -13,6 +13,7 @@
     "eslintplugin",
     "react",
     "nextjs",
+    "next",
     "use client"
   ],
   "author": "Oleksandr Sytnikov <sytnikov.zp@gmail.com>",
