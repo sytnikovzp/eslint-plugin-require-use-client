@@ -1,0 +1,41 @@
+{
+  "name": "eslint-plugin-require-use-client",
+  "version": "1.0.0",
+  "description": "Require \"use client\" directive when using client-only React APIs",
+  "main": "index.js",
+  "type": "commonjs",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "react",
+    "nextjs",
+    "use client"
+  ],
+  "author": "Oleksandr Sytnikov <sytnikov.zp@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sytnikovzp/eslint-plugin-require-use-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sytnikovzp/eslint-plugin-require-use-client/issues"
+  },
+  "homepage": "https://github.com/sytnikovzp/eslint-plugin-require-use-client",
+  "peerDependencies": {
+    "eslint": ">=7"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "mocha": "^11.7.1"
+  }
+}
