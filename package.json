@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-require-use-client",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Require \"use client\" directive and a blank line after it in component files",
   "main": "index.js",
   "type": "commonjs",
