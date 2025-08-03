@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/sytnikovzp/eslint-plugin-require-use-client",
   "peerDependencies": {
-    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint": ">=8"
   },
   "engines": {
