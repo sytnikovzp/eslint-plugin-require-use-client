@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.3.0](https://github.com/sytnikovzp/eslint-plugin-require-use-client/compare/v1.2.0...v1.3.0) (2025-08-03)
+
+
+### Features
+
+* add more React hooks requiring "use client" directive ([252939a](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/252939af9d47c6ecc99f5b29ed6c7c300fbc7bf5))
+* detect client-only imports (e.g. svg, css) as requiring 'use client' ([ee5f9aa](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/ee5f9aabfd9bcbe2f1dfe5e853df4a760053d29a))
+
+
+### Bug Fixes
+
+* added fixer ([93fdde7](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/93fdde71e234d38ad3743ec72478d2672697bcbd))
+* apply "use client" check only in .jsx and .tsx files ([2555c8f](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/2555c8fa4ec1d74da9597f389838b1ae0600b232))
+* **rule:** require blank line after "use client" directive ([9cca882](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/9cca8822fa5e3eda9e1c32eb87519e7232da8626))
+* updated keywords array ([97a78ac](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/97a78ac54ee274b6da6b2de3d98a6a15dceea435))
+* updated keywords array ([a31c803](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/a31c80345cd89d3f7d02fa7d0fea3bbc5e334939))
+* workflows bugs ([3155357](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/315535706497e67377a8ad6324a82259f5cab2bd))
+* workflows bugs ([a620467](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/a62046751893fe76fde9f42d69adb1c83f9f2e93))
+
 ## [1.2.0](https://github.com/sytnikovzp/eslint-plugin-require-use-client/compare/v1.1.0...v1.2.0) (2025-08-03)
 
 
