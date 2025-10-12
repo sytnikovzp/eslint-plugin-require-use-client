@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/sytnikovzp/eslint-plugin-require-use-client/compare/v1.17.0...v1.18.0) (2025-10-12)
+
+
+### Features
+
+* expand RuleTester cases for client-only features detection ([fd77ce3](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/fd77ce3d9c41482be958a1cbc2cff7bbf610ca54))
+
 ## [1.17.0](https://github.com/sytnikovzp/eslint-plugin-require-use-client/compare/v1.16.0...v1.17.0) (2025-10-12)
 
 
