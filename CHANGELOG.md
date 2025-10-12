@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/sytnikovzp/eslint-plugin-require-use-client/compare/v1.18.0...v1.18.1) (2025-10-12)
+
+
+### Bug Fixes
+
+* updated demo gif in README ([04794ae](https://github.com/sytnikovzp/eslint-plugin-require-use-client/commit/04794ae48787e51a8b3c9046d1bf5515adbe9ca8))
+
 ## [1.18.0](https://github.com/sytnikovzp/eslint-plugin-require-use-client/compare/v1.17.0...v1.18.0) (2025-10-12)
 
 
