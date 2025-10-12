@@ -5,7 +5,7 @@
   
 </p>
 
-An ESLint plugin that enforces the presence (or absence) of the `"use client"` directive in React component files, with an empty line after the directive. Designed for Next.js apps and React components that use client-only features.
+An ESLint plugin that enforces the `"use client"` directive (with a blank line) in Next.js/React client components and removes it from utility/type files. Fully autofixable. Works great with Next.js App Router (Next.js 13+) and React Server Components (RSC).
 
 ---
 
@@ -16,6 +16,7 @@ An ESLint plugin that enforces the presence (or absence) of the `"use client"` d
 - [Install](#-install)
 - [Configuration](#-configuration-example)
 - [Usage & Auto-fix](#-usage--auto-fix)
+- [Examples](#examples)
 - [Before / After (Autofix)](#before--after-autofix)
 - [FAQ](#faq)
 - [Development](#-development)
@@ -57,6 +58,7 @@ Client-only features (detected heuristics):
 - DOM/browser APIs: `window`, `document`, `localStorage`, etc.
 - Next.js client imports: `next/link`, `next/navigation`, `next/image`, `next/dynamic`.
 - JSX with client hooks, event handlers (`onClick`, etc.), `preventDefault`, and `createContext`.
+- Next.js App Router client components (Next.js 13+) in RSC context.
 
 Exempt files:
 
@@ -149,6 +151,24 @@ This will enforce the correct presence/absence of the `"use client"` directive a
 
 ---
 
+## Examples
+
+- **Enforce for event handlers**
+
+  - Source: `export default () => <button onClick={() => {}}/>`
+  - Fix: inserts `'use client';` + blank line
+
+- **Remove from utility/type files**
+
+  - Source: `'use client';\n\nexport const T = 1;`
+  - Fix: removes directive (preserves existing blank line)
+
+- **Require for Next.js imports**
+  - Source: `import Link from 'next/link'; export default () => <Link href="/"/>`
+  - Fix: inserts `'use client';` + blank line
+
+---
+
 ## Before / After (Autofix)
 
 Insert directive when needed:
@@ -203,6 +223,12 @@ import React from 'react';
 - **Is this compatible with Prettier?**  
   Yes. Prettier handles formatting; this rule enforces the `"use client"` directive.
 
+- **How do I enforce `"use client"` in Next.js App Router?**  
+  Enable the rule `require-use-client/require-use-client-directive` in your ESLint config and run `eslint --fix`. The rule detects client-only features (hooks, Next.js client imports, event handlers, browser APIs) and inserts the directive with a blank line.
+
+- **Does this rule work with React Server Components (RSC)?**  
+  Yes. It helps keep client components explicitly marked while avoiding `"use client"` in server/utility files.
+
 - **What counts as client-only features?**  
   React hooks (e.g., `useEffect`), `next/link|navigation|image|dynamic` imports, access to `window`/`document`/`localStorage`, JSX event handlers (e.g., `onClick`), calls to `preventDefault`, `createContext`.
 
@@ -215,6 +241,7 @@ import React from 'react';
 Useful links:
 
 - ESLint Rules and Autofix: https://eslint.org/docs/latest/extend/custom-rules
+- Next.js Client Components and `"use client"`: https://nextjs.org/docs/app/building-your-application/rendering/client-components
 
 ## 📢 Perfect for Teams & Open Source Projects
 

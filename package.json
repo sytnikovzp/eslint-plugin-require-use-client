@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-require-use-client",
   "version": "1.18.1",
-  "description": "Require \"use client\" directive and a blank line after it in component files",
+  "description": "Enforce the \"use client\" directive (with a blank line) in Next.js/React client components; remove it in utility/type files. With autofix.",
   "main": "index.js",
   "type": "commonjs",
   "files": [
@@ -14,13 +14,16 @@
     "eslint-rule",
     "autofix",
     "react",
-    "nextjs",
     "next",
-    "use client",
-    "use-client",
-    "directive",
+    "nextjs",
+    "app-router",
+    "nextjs-app-router",
     "client-components",
-    "app-router"
+    "react-server-components",
+    "rsc",
+    "use-client",
+    "use client",
+    "directive"
   ],
   "author": "Oleksandr Sytnikov <sytnikov.zp@gmail.com>",
   "publishConfig": {
