@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-require-use-client",
-  "version": "1.18.1",
+  "version": "1.18.2",
   "description": "Enforce the \"use client\" directive (with a blank line) in Next.js/React client components; remove it in utility/type files. With autofix.",
   "main": "index.js",
   "type": "commonjs",
