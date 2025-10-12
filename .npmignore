@@ -1,3 +1,6 @@
 .vscode/
+dist/
 tests/
+tsconfig.json
+*.test.ts
 .env

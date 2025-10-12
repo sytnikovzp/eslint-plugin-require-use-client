@@ -21,6 +21,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "npm run build && mocha tests/**/*.test.js",
+    "test:ts": "npm run build && mocha tests/**/*.test.ts",
+    "dev": "tsc --watch"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -38,6 +45,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "mocha": "^11.7.1"
+    "mocha": "^11.7.4"
   }
 }
