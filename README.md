@@ -1,58 +1,47 @@
 # ESLint Plugin: require "use client" directive
 
+<p align="center">
+  <img width="576" height="384" src="./assets/demo.gif" alt="ESLint rule autofix demo: require use client (before/after)">
+  
+</p>
+
 An ESLint plugin that enforces the presence (or absence) of the `"use client"` directive in React component files, with an empty line after the directive. Designed for Next.js apps and React components that use client-only features.
 
 ---
 
-## Why
+## Table of Contents
 
-- **Consistency**: All client components start with a clear `"use client"` directive.
-- **Safety**: Avoid unnecessary `"use client"` in types/utilities/server-only files.
-- **DX**: Autofix inserts/removes the directive and ensures a blank line.
+- [Why Use This Plugin?](#-why-use-this-plugin)
+- [Key Features](#-key-features)
+- [Install](#-install)
+- [Configuration](#-configuration-example)
+- [Usage & Auto-fix](#-usage--auto-fix)
+- [Before / After (Autofix)](#before--after-autofix)
+- [FAQ](#faq)
+- [Development](#-development)
 
----
-
-## Install
-
-```bash
-npm i -D eslint-plugin-require-use-client
-```
-
----
-
-## Configure
-
-`.eslintrc` (JSON):
-
-```json
-{
-  "plugins": ["require-use-client"],
-  "rules": {
-    "require-use-client/require-use-client-directive": "warn"
-  }
-}
-```
-
-`.eslintrc.js` (CommonJS):
-
-```js
-module.exports = {
-  plugins: ['require-use-client'],
-  rules: {
-    'require-use-client/require-use-client-directive': 'warn',
-  },
-};
-```
+<p align="center">
+  <a href="https://www.npmjs.com/package/eslint-plugin-require-use-client">
+    <img src="https://img.shields.io/npm/v/eslint-plugin-require-use-client" alt="npm version" />
+  </a>
+  <a href="https://www.npmjs.com/package/eslint-plugin-require-use-client">
+    <img src="https://img.shields.io/npm/dm/eslint-plugin-require-use-client" alt="npm downloads" />
+  </a>
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/npm/l/eslint-plugin-require-use-client" alt="license" />
+  </a>
+  <a href="https://github.com/sytnikovzp/eslint-plugin-require-use-client/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/sytnikovzp/eslint-plugin-require-use-client/release.yml?branch=main" alt="CI" />
+  </a>
+</p>
 
 ---
 
-## Usage
+## 🌟 Why Use This Plugin?
 
-Autofix across your project:
-
-```bash
-npx eslint --fix .
-```
+- ✅ Consistency: All client components start with an explicit `"use client"` directive.
+- ✅ Safety: The directive is removed from type/utility/server-only files where it is not needed.
+- ✅ DX: Autofix inserts/removes the directive and ensures a blank line after it.
 
 ---
 
@@ -75,7 +64,92 @@ Exempt files:
 
 ---
 
-## Before / After
+## ✨ Key Features
+
+- 🧭 Requires `"use client"` when client-only features are used (React hooks, `next/link|navigation|image|dynamic` imports, browser APIs, event handlers, `preventDefault`, `createContext`).
+- 🧹 Removes the directive in type/utility files (e.g., `src/shared/types/**`, `src/common/api/**`, `src/lib/**`).
+- ↩️ Ensures a blank line immediately after the directive.
+- 🛠 Fully compatible with `eslint --fix`.
+- 🚀 Works in JS/TS projects, zero dependencies → very fast.
+
+---
+
+## 🔥 Why not just use Prettier?
+
+Prettier handles formatting. This rule is about semantics — ensuring the `"use client"` directive is present (and followed by a blank line) where needed.
+
+---
+
+## 📦 Install
+
+Add the plugin to your project as a dev dependency:
+
+```bash
+npm i -D eslint-plugin-require-use-client
+```
+
+or with Yarn:
+
+```bash
+yarn add -D eslint-plugin-require-use-client
+```
+
+---
+
+## ⚙️ Configuration Example
+
+### For `.eslintrc.js` (CommonJS format):
+
+```js
+module.exports = {
+  plugins: ['require-use-client'],
+  rules: {
+    'require-use-client/require-use-client-directive': 'warn',
+  },
+};
+```
+
+### For `.eslintrc` or `.eslintrc.json` (JSON format):
+
+```json
+{
+  "plugins": ["require-use-client"],
+  "rules": {
+    "require-use-client/require-use-client-directive": "warn"
+  }
+}
+```
+
+### For `.eslint.config.js` (ES module format):
+
+```js
+import requireUseClient from 'eslint-plugin-require-use-client';
+
+export default {
+  plugins: {
+    'require-use-client': requireUseClient,
+  },
+  rules: {
+    'require-use-client/require-use-client-directive': 'warn',
+  },
+};
+```
+
+---
+
+## 🛠 Usage & Auto-fix
+
+You can automatically apply the rule across your project:
+
+```bash
+npx eslint --fix .
+```
+
+This will enforce the correct presence/absence of the `"use client"` directive across your project.
+
+---
+
+## Before / After (Autofix)
 
 Insert directive when needed:
 
@@ -124,17 +198,67 @@ import React from 'react';
 
 ---
 
-## Development
+## FAQ
+
+- **Is this compatible with Prettier?**  
+  Yes. Prettier handles formatting; this rule enforces the `"use client"` directive.
+
+- **What counts as client-only features?**  
+  React hooks (e.g., `useEffect`), `next/link|navigation|image|dynamic` imports, access to `window`/`document`/`localStorage`, JSX event handlers (e.g., `onClick`), calls to `preventDefault`, `createContext`.
+
+- **In which files should the directive be absent?**  
+  Type/utility files (e.g., `src/shared/types/**`, `src/common/api/**`, `src/lib/**`), and Next.js `layout.*`/`page.*` are exempt.
+
+- **Supported versions?**  
+  Node.js 18+, ESLint 8+. Tested with React 18 and Next.js.
+
+Useful links:
+
+- ESLint Rules and Autofix: https://eslint.org/docs/latest/extend/custom-rules
+
+## 📢 Perfect for Teams & Open Source Projects
+
+Ensures a **consistent guideline** for client components in your Next.js/React projects.
+Great for **large codebases** where explicitly separating client and server code matters.
+
+---
+
+## 🛠 Development
+
+This plugin is built with TypeScript for better type safety and maintainability.
+
+### Prerequisites
+
+- Node.js >= 18
+- npm or yarn
+
+### Setup
 
 ```bash
-# Install deps
+# Install dependencies
 npm install
+
+# Build the project
+npm run build
 
 # Run tests
 npm test
 
-# Watch (not required for JS build)
+# Watch mode for development
 npm run dev
 ```
 
-Node.js >= 18, ESLint >= 8.
+### Project Structure
+
+```
+index.js                      # Main plugin entry
+lib/
+  rules/
+    require-use-client-directive.js   # Rule implementation
+tests/
+  require-use-client-directive.test.js
+```
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

@@ -18,7 +18,6 @@
     "next",
     "use client",
     "use-client",
-    "useclient",
     "directive",
     "client-components",
     "app-router"
