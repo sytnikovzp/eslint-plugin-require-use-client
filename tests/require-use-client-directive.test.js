@@ -27,6 +27,12 @@ describe('require-use-client-directive', () => {
         code: 'export default function Page(){ return (<div/>); }',
       },
 
+      // JSX only without client features (no hooks, no handlers, no next imports)
+      {
+        filename: 'src/components/OnlyJSX.tsx',
+        code: 'export default function C(){ return <div id="root"/> }',
+      },
+
       // has directive and uses client feature
       {
         filename: 'Component.tsx',
@@ -109,6 +115,112 @@ describe('require-use-client-directive', () => {
         ],
         // removal may leave the existing blank line; expect leading newlines preserved
         output: '\n\nexport default function C(){ return 123 }',
+      },
+
+      // browser globals usage should require directive
+      {
+        filename: 'src/components/UsesWindow.tsx',
+        code: 'export default function C(){ console.log(window.location.href); return null }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nexport default function C(){ console.log(window.location.href); return null }',
+      },
+
+      // event handler attribute should require directive
+      {
+        filename: 'src/components/Handler.tsx',
+        code: 'export default function C(){ return <button onClick={() => {}}/> }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nexport default function C(){ return <button onClick={() => {}}/> }',
+      },
+
+      // preventDefault call should require directive
+      {
+        filename: 'src/components/Prevent.tsx',
+        code: 'export default function C(){ const on = (e) => e.preventDefault(); return <form onSubmit={on}/>} ',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nexport default function C(){ const on = (e) => e.preventDefault(); return <form onSubmit={on}/>} ',
+      },
+
+      // asset and next imports should require directive
+      {
+        filename: 'src/components/Img.tsx',
+        code: 'import Image from "next/image"; export default function C(){ return <Image src="/a.png" width={1} height={1}/> }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nimport Image from "next/image"; export default function C(){ return <Image src="/a.png" width={1} height={1}/> }',
+      },
+      {
+        filename: 'src/components/Nav.tsx',
+        code: 'import { useRouter } from "next/navigation"; export default function C(){ const r = useRouter(); return null }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nimport { useRouter } from "next/navigation"; export default function C(){ const r = useRouter(); return null }',
+      },
+      {
+        filename: 'src/components/Style.tsx',
+        code: 'import "./styles.css"; export default function C(){ return null }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nimport "./styles.css"; export default function C(){ return null }',
+      },
+      {
+        filename: 'src/components/Icon.tsx',
+        code: 'import Logo from "./logo.svg"; export default function C(){ return <Logo/> }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nimport Logo from "./logo.svg"; export default function C(){ return <Logo/> }',
+      },
+
+      // createContext should require directive
+      {
+        filename: 'src/components/Ctx.tsx',
+        code: 'import React, { createContext } from "react"; const Ctx = createContext(null); export default function C(){ return null }',
+        errors: [
+          {
+            message:
+              'Missing "use client" directive for component using client-only features.',
+          },
+        ],
+        output:
+          '"use client";\n\nimport React, { createContext } from "react"; const Ctx = createContext(null); export default function C(){ return null }',
       },
     ],
   });
